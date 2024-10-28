@@ -16,8 +16,6 @@
 """
 
 mac = "AAAA:BBBB:CCCC"
-octets = mac.split(":")
-oct1 = int(octets[0], 16)
-oct2 = int(octets[1], 16)
-oct3 = int(octets[2], 16)
-print("{:b}{:b}{:b}".format(oct1, oct2, oct3))
+
+bin_mac = "{:b}".format(int(mac.replace(":", ""), 16))
+print(bin_mac)
