@@ -44,6 +44,8 @@ london_co = {
         "routing": True,
     },
 }
-device = input("Какой девайс? ")
-par = input ("Какой параметр? ")
-print(london_co[device][par])
+
+device = input("Введите имя устройства: ")
+parameter = input("Введите имя параметра: ")
+
+print(london_co[device][parameter])
