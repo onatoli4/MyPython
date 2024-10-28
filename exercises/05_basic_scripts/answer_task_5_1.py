@@ -47,7 +47,6 @@ london_co = {
     },
 }
 
-device = input("Какой девайс? ")
-keys = list(london_co.keys())
-ind = keys.index(device)
-print(london_co[keys[ind]])
+device = input("Введите имя устройства: ")
+
+print(london_co[device])
