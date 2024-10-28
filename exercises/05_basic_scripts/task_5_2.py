@@ -30,3 +30,22 @@ Out[1]: '11111111111111111111111111110000'
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+ipmask = input("Введите адрес с маской: ").split("/")
+ip = ipmask[0].split(".")
+mask = int(ipmask[-1])
+mask_bin = "1" * mask + "0" * (32 - mask)
+
+template = '''
+Network:
+{0:<10}{1:<10}{2:<10}{3:<10}
+{0:08b}  {1:08b}  {2:08b}  {3:08b}
+
+Mask:
+/{4}
+{9:<10}{10:<10}{11:<10}{12:<10}
+{5}  {6}  {7}  {8}
+'''
+print(template.format(int(ip[0]), int(ip[1]), int(ip[2]), int(ip[3]), mask,
+                      mask_bin[0:8], mask_bin[8:16], mask_bin[16:24], mask_bin[24:32],
+                      int(mask_bin[0:8], 2), int(mask_bin[8:16], 2), int(mask_bin[16:24], 2),
+                      int(mask_bin[24:32], 2)))
