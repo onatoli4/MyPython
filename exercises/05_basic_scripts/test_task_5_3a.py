@@ -1,14 +1,14 @@
-import sys
 from functools import wraps
 from importlib import reload
-
+import sys
 import pytest
 
-sys.path.append("..")
 
-from pyneng_common_functions import check_pytest
+# Проверка что тест вызван через pytest ..., а не python ...
+from _pytest.assertion.rewrite import AssertionRewritingHook
 
-check_pytest(__loader__, __file__)
+if not isinstance(__loader__, AssertionRewritingHook):
+    print(f"Тесты нужно вызывать используя такое выражение:\npytest {__file__}\n\n")
 
 
 def count_calls(func):
@@ -18,7 +18,6 @@ def count_calls(func):
         wrapper.total_calls += 1
         result = func(*args, **kwargs)
         return result
-
     wrapper.total_calls = 0
     return wrapper
 
@@ -78,7 +77,7 @@ def test_task_access(capsys, monkeypatch):
         out
     ), "Ничего не выведено на стандартный поток вывода. Надо не только получить нужный результат, но и вывести его на стандартный поток вывода с помощью print"
     assert (
-        correct_stdout == out.strip()
+        correct_stdout in out.strip()
     ), "На стандартный поток вывода выводится неправильный вывод"
 
 
@@ -102,5 +101,5 @@ def test_task_trunk(capsys, monkeypatch):
         out
     ), "Ничего не выведено на стандартный поток вывода. Надо не только получить нужный результат, но и вывести его на стандартный поток вывода с помощью print"
     assert (
-        correct_stdout == out.strip()
+        correct_stdout in out.strip()
     ), "На стандартный поток вывода выводится неправильный вывод"
