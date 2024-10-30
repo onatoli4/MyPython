@@ -12,3 +12,24 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+while True:
+    ip = input("Введите IP-адрес в формате x.x.x.x: ")
+    ip_list = ip.split(".")
+    ip_valid = len(ip_list) == 4
+    for octet in ip_list:
+        ip_valid = octet.isdigit() and int(octet) >= 0 and int(octet) <= 255 and ip_valid 
+    if ip_valid:
+        break
+    print("Неправильный IP-адрес")
+
+ip1 = int(ip_list[0])
+if ip == "0.0.0.0":
+    print("unassigned")
+elif ip == "255.255.255.255":
+    print("local broadcast")
+elif ip1 > 0 and ip1 < 224:
+    print("unicast")
+elif ip1 > 223 and ip1 < 240:
+    print("multicast")
+else:
+    print("unused")
