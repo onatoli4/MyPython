@@ -17,18 +17,11 @@ Enter VLAN number: 10
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
-result = []
-with open('CAM_table.txt') as f:
-    for line in f:
+user_vlan = input("Enter VLAN number: ")
+
+with open("CAM_table.txt", "r") as conf:
+    for line in conf:
         words = line.split()
-        if words and words[0].isdigit():
+        if words and words[0].isdigit() and words[0] == user_vlan:
             vlan, mac, _, intf = words
-            result.append([int(vlan), mac, intf])
-myvlan = int(input("Введите номер VLAN: "))
-vlan_ex = False
-for vlan, mac, intf in sorted(result):
-    if vlan == myvlan:
-        print(f"{vlan:<9}{mac:<20}{intf}")
-        vlan_ex = True
-if not vlan_ex:
-    print("Такого VLAN нет")
+            print(f"{vlan:9}{mac:20}{intf}")
