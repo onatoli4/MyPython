@@ -16,12 +16,14 @@
 
 """
 from sys import argv
-src = argv[1]
-dst = argv[2]
+
 ignore = ["duplex", "alias", "configuration"]
-with open(src) as s, open(dst, "w") as d:
-    for line in s:
+
+src_file, dst_file = argv[1], argv[2]
+
+with open(src_file) as src, open(dst_file, 'w') as dst:
+    for line in src:
         words = line.split()
-        words_int = set(words) & set(ignore)
-        if not line.startswith("!") and not words_int:
-            d.write(line)
+        words_intersect = set(words) & set(ignore)
+        if not line.startswith("!") and not words_intersect:
+            dst.write(line)
