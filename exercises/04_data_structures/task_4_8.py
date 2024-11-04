@@ -26,9 +26,9 @@
 """
 
 ip = "192.168.3.1"
-ipl = ip.split(".")
+ip1,ip2,ip3,ip4 = ip.split(".")
 ipt = '''
 {0:<10}{1:<10}{2:<10}{3:<10}
 {0:08b}  {1:08b}  {2:08b}  {3:08b}
 '''
-print(ipt.format(int(ipl[0]), int(ipl[1]), int(ipl[2]), int(ipl[3])))
+print(ipt.format(int(ip1), int(ip2), int(ip3), int(ip4)))

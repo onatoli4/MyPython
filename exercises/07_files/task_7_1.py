@@ -22,5 +22,5 @@ Last update           {}
 Outbound Interface    {}'''
 with open("ospf.txt") as f:
     for line in f:
-        ospf = line.replace(",", "").replace("[", "").replace("]", "").split()
-        print(temp.format(ospf[1], ospf[2], ospf[4], ospf[5], ospf[6]))
+        _,ip,ad,_,hop,time,intf = line.replace(",", "").replace("[", "").replace("]", "").split()
+        print(temp.format(ip, ad, hop, time, intf))

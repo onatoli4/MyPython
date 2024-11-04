@@ -26,8 +26,7 @@ Prefix                {}
 AD/Metric             {}
 Next-Hop              {}
 Last update           {}
-Outbound Interface    {}
-"""
+Outbound Interface    {}"""
 
-x = ospf_route.replace(",", " ").split()
-print(template.format(x[0], x[1].strip("[]"), x[3], x[4], x[5]))
+ip, ad, _, hop, upd, intf = ospf_route.replace(","," ").replace("["," ").replace("]"," ").split()
+print(template.format(ip, ad, hop, upd, intf))

@@ -25,7 +25,7 @@ if len(ip_list) != 4:
     ip_valid = False
 else:
     for octet in ip_list:
-        if not octet.isdigit() or int(octet) < 0 or int(octet) > 255:
+        if not octet.isdigit() or not 0 <= int(octet) <= 255:
             ip_valid = False
             break
 if ip_valid:

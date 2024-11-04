@@ -17,7 +17,7 @@ while True:
     ip_list = ip.split(".")
     ip_valid = len(ip_list) == 4
     for octet in ip_list:
-        ip_valid = octet.isdigit() and int(octet) >= 0 and int(octet) <= 255 and ip_valid 
+        ip_valid = octet.isdigit() and 0 <= int(octet) <= 255 and ip_valid 
     if ip_valid:
         break
     print("Неправильный IP-адрес")

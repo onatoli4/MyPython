@@ -31,9 +31,10 @@ Out[1]: '11111111111111111111111111110000'
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
 ipmask = input("Введите адрес с маской: ").split("/")
-ip = ipmask[0].split(".")
+ip1,ip2,ip3,ip4 = ipmask[0].split(".")
 mask = int(ipmask[-1])
 mask_bin = "1" * mask + "0" * (32 - mask)
+m1,m2,m3,m4 = mask_bin[0:8], mask_bin[8:16], mask_bin[16:24], mask_bin[24:32]
 
 template = '''
 Network:
@@ -45,7 +46,6 @@ Mask:
 {9:<10}{10:<10}{11:<10}{12:<10}
 {5}  {6}  {7}  {8}
 '''
-print(template.format(int(ip[0]), int(ip[1]), int(ip[2]), int(ip[3]), mask,
-                      mask_bin[0:8], mask_bin[8:16], mask_bin[16:24], mask_bin[24:32],
-                      int(mask_bin[0:8], 2), int(mask_bin[8:16], 2), int(mask_bin[16:24], 2),
-                      int(mask_bin[24:32], 2)))
+print(template.format(int(ip1), int(ip2), int(ip3), int(ip4), mask,
+                      m1, m2, m3, m4,
+                      int(m1, 2), int(m2, 2), int(m3, 2), int(m4, 2)))
