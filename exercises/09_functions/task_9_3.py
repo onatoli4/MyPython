@@ -30,9 +30,9 @@ def get_int_vlan_map(config_filename):
         for line in f:
             if 'FastEth' in line:
                 intf = line[line.find("Fast")::].strip()
-            if 'switchport access vlan' in line:
+            elif 'switchport access vlan' in line:
                 access[intf] = int(line.split()[-1])
-            if 'switchport trunk allowed vlan' in line:
+            elif 'switchport trunk allowed vlan' in line:
                 trunk[intf] = [int(vl) for vl in line.split()[-1].split(',')]
     return access, trunk
 

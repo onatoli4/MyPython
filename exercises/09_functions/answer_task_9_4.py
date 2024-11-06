@@ -60,21 +60,22 @@ def ignore_command(command, ignore):
     * False - если нет
     """
     ignore_status = False
-    if set(ignore) & set(command.split()):
-        ignore_status = True
+    for word in ignore:
+        if word in command:
+            ignore_status = True
     return ignore_status
 
+
 def convert_config_to_dict(config_filename):
-    result = {}
+    config_dict = {}
     with open(config_filename) as f:
         for line in f:
             line = line.rstrip()
             if line and not (line.startswith("!") or ignore_command(line, ignore)):
                 if line[0].isalnum():
-                    string = line
-                    result[string] = []
+                    section = line
+                    config_dict[section] = []
                 else:
-                    result[string].append(line.strip())
-    return result
+                    config_dict[section].append(line.strip())
+    return config_dict
 
-print(convert_config_to_dict('config_sw1.txt'))
