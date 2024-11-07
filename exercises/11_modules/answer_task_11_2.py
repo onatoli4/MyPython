@@ -38,12 +38,17 @@ infiles = [
     "sh_cdp_n_r3.txt",
 ]
 
-def create_network_map(filenames):
-    result = {}
-    for file in filenames:
-        with open(file) as f:
-            result.update(parse_cdp_neighbors(f.read()))   
-    return result
 
-if __name__ == '__main__':
-    pprint(create_network_map(infiles))
+def create_network_map(filenames):
+    network_map = {}
+
+    for filename in filenames:
+        with open(filename) as show_command:
+            parsed = parse_cdp_neighbors(show_command.read())
+            network_map.update(parsed)
+    return network_map
+
+
+if __name__ == "__main__":
+    topology = create_network_map(infiles)
+    pprint(topology)
