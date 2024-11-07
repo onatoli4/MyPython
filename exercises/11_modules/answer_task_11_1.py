@@ -33,20 +33,7 @@ R6           Fa 0/2          143           R S I           2811       Fa 0/0
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
-'''
-    com = command_output.strip()
-    dev_local = com[:com.find('>show')]
-    dev_rem_str = com[com.find('Device ID'):].split('\n')
-    local = dev_rem_str[0].find('Local')
-    port = dev_rem_str[0].find('Port ID')
-    dev_rem_str.pop(0)
-    dev_new = []
-    for string in dev_rem_str:
-        dev_new.append([string[0:4].replace(' ',''),
-                        string[local:local+8].replace(' ',''),
-                        string[port:].replace(' ','')])
-    result = {tuple([dev_local, x[1]]): tuple([x[0], x[2]]) for x in dev_new}
-'''
+
 
 def parse_cdp_neighbors(command_output):
     """
@@ -57,15 +44,17 @@ def parse_cdp_neighbors(command_output):
     Плюс учимся работать с таким выводом.
     """
     result = {}
-    com_list = command_output.split('\n')
-    for com in com_list:
-        if len(com.split('>')) == 2:
-            hostname = com.split('>')[0]
-        elif len(com.split()) > 5 and com.split()[3].isdigit():
-            neighbor, intf_l, num_l, *other, intf_r, num_r = com.split()
-            result[(hostname, intf_l + num_l)] = (neighbor, intf_r + num_r)
-
+    for line in command_output.split("\n"):
+        line = line.strip()
+        columns = line.split()
+        if ">" in line:
+            hostname = line.split(">")[0]
+        # 3 индекс это столбец holdtime - там всегда число
+        elif len(columns) >= 5 and columns[3].isdigit():
+            r_host, l_int, l_int_num, *other, r_int, r_int_num = columns
+            result[(hostname, l_int + l_int_num)] = (r_host, r_int + r_int_num)
     return result
+
 
 if __name__ == "__main__":
     with open("sh_cdp_n_sw1.txt") as f:
