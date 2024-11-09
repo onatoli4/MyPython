@@ -36,24 +36,18 @@
 """
 import ipaddress
 
-def convert_ranges_to_ip_list(ip_list):
-    new_list = []
-    for ip in ip_list:
-        if "-" in ip:
-            start, stop = ip.split('-')
-            if not "." in stop:
-                stop = '.'.join(start.split('.')[:-1] + [stop])
-            ip1 = ipaddress.ip_address(start)
-            ip2 = ipaddress.ip_address(stop)
-            for ip in range(int(ip1), int(ip2)+1):
-                new_list.append(str(ipaddress.ip_address(ip)))
+
+def convert_ranges_to_ip_list(ip_addresses):
+    ip_list = []
+    for ip_address in ip_addresses:
+        if "-" in ip_address:
+            start_ip, stop_ip = ip_address.split("-")
+            if "." not in stop_ip:
+                stop_ip = ".".join(start_ip.split(".")[:-1] + [stop_ip])
+            start_ip = ipaddress.ip_address(start_ip)
+            stop_ip = ipaddress.ip_address(stop_ip)
+            for ip in range(int(start_ip), int(stop_ip) + 1):
+                ip_list.append(str(ipaddress.ip_address(ip)))
         else:
-            new_list.append(ip)
-
-    return new_list
-
-if __name__ == '__main__':
-    print(convert_ranges_to_ip_list(['8.8.4.4', '1.1.1.1-3', '172.21.41.128-172.21.41.132']))
-            
-            
-            
+            ip_list.append(ip_address)
+    return ip_list
