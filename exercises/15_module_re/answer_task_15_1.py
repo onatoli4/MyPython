@@ -25,13 +25,9 @@
 """
 import re
 
-def get_ip_from_cfg(filename):
-    
-    regex = r'ip address (\S+) (\S+)'
-    
-    with open(filename) as f:
-        result = [match.groups() for match in re.finditer(regex, f.read())]
-    return result
 
-if __name__ == '__main__':
-    print(get_ip_from_cfg('config_r1.txt'))
+def get_ip_from_cfg(config):
+    regex = r"ip address (\S+) (\S+)"
+    with open(config) as f:
+        result = [m.groups() for m in re.finditer(regex, f.read())]
+    return result
