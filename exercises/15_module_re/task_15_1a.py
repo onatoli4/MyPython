@@ -27,15 +27,13 @@
 import re
 
 def get_ip_from_cfg(filename):
-    
-    regex = re.compile(r'interface (?P<intf>\S+)\n'
-                       r'( .*\n)*'
-                       r' ip address (?P<ip>\S+) (?P<mask>\S+)')
-    
+    regex = re.compile(r'interface (\S+)\n'
+                       r'(?: .*\n)*'
+                       r' ip address (\S+) (\S+)')
     with open(filename) as f:
-        result = {m.group('intf'): m.group('ip','mask')
-                  for m in re.finditer(regex, f.read())}
+        match = regex.finditer(f.read())
+        result = {m.group(1): m.group(2,3) for m in match}
     return result
 
 if __name__ == '__main__':
-    print(get_ip_from_cfg('config_r1.txt'))
+    print(get_ip_from_cfg("config_r1.txt"))

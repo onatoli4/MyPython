@@ -34,18 +34,13 @@ def get_ip_from_cfg(filename):
     result = {}
     regex = re.compile(r'interface (?P<intf>\S+)\n'
                        r'(?: .*\n)*'
-                       r' ip address (?P<ip1>\S+) (?P<mask1>\S+)\n'
-                       r'(?: ip address (?P<ip2>\S+) (?P<mask2>\S+))*')
-    
+                       r' ip address (\S+) (\S+)\n'
+                       r'(?: ip address (\S+) (\S+) secondary)*')
     with open(filename) as f:
-        match = re.finditer(regex, f.read())
+        match = regex.finditer(f.read())
         for m in match:
-            if m.group('ip2'):
-                result[m.group('intf')] = [m.group('ip1','mask1'), m.group('ip2','mask2')]
-            else:
-                result[m.group('intf')] = [m.group('ip1','mask1')]
-
+            result[m.group('intf')] = re.findall('ip address (\S+) (\S+)', m.group())    
     return result
 
 if __name__ == '__main__':
-    print(get_ip_from_cfg('config_r2.txt'))
+    print(get_ip_from_cfg("config_r2.txt"))

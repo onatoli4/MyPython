@@ -26,12 +26,10 @@
 import re
 
 def get_ip_from_cfg(filename):
-    
-    regex = r'ip address (\S+) (\S+)'
-    
+    regex = re.compile(r'ip address (\S+) (\S+)')
     with open(filename) as f:
-        result = [match.groups() for match in re.finditer(regex, f.read())]
+        result = regex.findall(f.read())
     return result
 
 if __name__ == '__main__':
-    print(get_ip_from_cfg('config_r1.txt'))
+    print(get_ip_from_cfg("config_r1.txt"))
