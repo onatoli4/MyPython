@@ -1,0 +1,42 @@
+object network LOCAL_10.66.0.13
+ host 995
+ nat (inside,outside) static interface service tcp 995 995
+object network LOCAL_10.66.0.21
+ host 20065
+ nat (inside,outside) static interface service tcp 20065 20065
+object network LOCAL_10.66.0.22
+ host 443
+ nat (inside,outside) static interface service tcp 443 44443
+object network LOCAL_10.66.0.23
+ host 2565
+ nat (inside,outside) static interface service tcp 2565 2565
+object network LOCAL_10.1.2.28
+ host 563
+ nat (inside,outside) static interface service tcp 563 563
+object network LOCAL_10.98.1.1
+ host 3389
+ nat (inside,outside) static interface service tcp 3389 3389
+object network LOCAL_10.14.1.15
+ host 12220
+ nat (inside,outside) static interface service tcp 12220 12220
+object network LOCAL_10.14.1.169
+ host 25565
+ nat (inside,outside) static interface service tcp 25565 25565
+object network LOCAL_10.66.0.26
+ host 220
+ nat (inside,outside) static interface service tcp 220 220
+object network LOCAL_10.66.37.11
+ host 80
+ nat (inside,outside) static interface service tcp 80 8080
+object network LOCAL_10.66.37.13
+ host 10995
+ nat (inside,outside) static interface service tcp 10995 10995
+object network LOCAL_10.1.2.84
+ host 22
+ nat (inside,outside) static interface service tcp 22 20022
+object network LOCAL_10.1.2.66
+ host 22
+ nat (inside,outside) static interface service tcp 22 20023
+object network LOCAL_10.1.2.63
+ host 80
+ nat (inside,outside) static interface service tcp 80 80

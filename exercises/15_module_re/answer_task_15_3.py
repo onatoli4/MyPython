@@ -34,18 +34,21 @@ object network LOCAL_10.1.9.5
 """
 import re
 
-def convert_ios_nat_to_asa(src, dst):
-    regex = re.compile(r'tcp (?P<ip>\S+) '
-                       r'(?P<lport>\d+) interface \S+ (?P<rport>\d+)')
-    template = ("object network LOCAL_{ip}\n"
-                " host {ip}\n"
-                " nat (inside,outside) static interface service tcp {lport} {rport}\n")
-    with open(src) as src, open(dst, 'w') as dst:
-        match = regex.finditer(src.read())
-        for m in match:
-            dst.write(template.format(**m.groupdict()))
+
+def convert_ios_nat_to_asa(cisco_ios, cisco_asa):
+    regex = (
+        "tcp (?P<local_ip>\S+) +(?P<lport>\d+) +interface +\S+ (?P<outside_port>\d+)"
+    )
+    asa_template = (
+        "object network LOCAL_{local_ip}\n"
+        " host {local_ip}\n"
+        " nat (inside,outside) static interface service tcp {lport} {outside_port}\n"
+    )
+    with open(cisco_ios) as f, open(cisco_asa, "w") as asa_nat_cfg:
+        data = re.finditer(regex, f.read())
+        for match in data:
+            asa_nat_cfg.write(asa_template.format(**match.groupdict()))
 
 
-if __name__ == '__main__':
-    convert_ios_nat_to_asa('cisco_nat_config.txt', 'new.txt')
-        
+if __name__ == "__main__":
+    convert_ios_nat_to_asa("cisco_nat_config.txt", "cisco_asa_config.txt")
