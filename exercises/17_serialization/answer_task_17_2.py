@@ -46,25 +46,32 @@ import re
 import csv
 import glob
 
-sh_version_files = glob.glob("sh_vers*")
-#print(sh_version_files)
-headers = ["hostname", "ios", "image", "uptime"]
+
+def parse_sh_version(sh_ver_output):
+    regex = (
+        "Cisco IOS .*? Version (?P<ios>\S+), .*"
+        "uptime is (?P<uptime>[\w, ]+)\n.*"
+        'image file is "(?P<image>\S+)".*'
+    )
+    match = re.search(regex, sh_ver_output, re.DOTALL,)
+    if match:
+        return match.group("ios", "image", "uptime")
+
 
 def write_inventory_to_csv(data_filenames, csv_filename):
-    with open(csv_filename, 'w') as dst:
-        writer = csv.writer(dst)
+    headers = ["hostname", "ios", "image", "uptime"]
+    with open(csv_filename, "w") as f:
+        writer = csv.writer(f)
         writer.writerow(headers)
-        for file in data_filenames:
-            hostname = re.search(r'sh_version_(\w+)', file).group(1)
-            with open(file) as src:
-                writer.writerow((hostname,) + parse_sh_version(src.read())) 
-    
-def parse_sh_version(output):
-    regex = re.compile(r'Cisco IOS Software.*?Version (?P<ios>\S+),.*?'
-                       r'router uptime is (?P<uptime>.+?)\n.*?'
-                       r'System image file is "(?P<image>\S+)"', re.S)
-    match = regex.search(output)
-    return match.group('ios','image','uptime')   
 
-if __name__ == '__main__':
-    write_inventory_to_csv(sh_version_files, 'routers_inventory.csv')
+        for filename in data_filenames:
+            hostname = re.search("sh_version_(\S+).txt", filename).group(1)
+            with open(filename) as f:
+                parsed_data = parse_sh_version(f.read())
+                if parsed_data:
+                    writer.writerow([hostname] + list(parsed_data))
+
+
+if __name__ == "__main__":
+    sh_version_files = glob.glob("sh_vers*")
+    write_inventory_to_csv(sh_version_files, "routers_inventory.csv")
