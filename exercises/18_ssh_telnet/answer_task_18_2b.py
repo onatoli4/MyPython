@@ -45,31 +45,52 @@ In [17]: result = send_config_commands(r1, commands)
 Команда "a" выполнилась с ошибкой "Ambiguous command:  "a"" на устройстве 192.168.100.1
 
 In [18]: pprint(result, width=120)
-({'ip http server': 'config term\n'
-                    'Enter configuration commands, one per line.  End with CNTL/Z.\n'
-                    'R1(config)#ip http server\n'
+({'ip http server': 'config term
+'
+                    'Enter configuration commands, one per line.  End with CNTL/Z.
+'
+                    'R1(config)#ip http server
+'
                     'R1(config)#',
-  'logging buffered 20010': 'config term\n'
-                            'Enter configuration commands, one per line.  End with CNTL/Z.\n'
-                            'R1(config)#logging buffered 20010\n'
+  'logging buffered 20010': 'config term
+'
+                            'Enter configuration commands, one per line.  End with CNTL/Z.
+'
+                            'R1(config)#logging buffered 20010
+'
                             'R1(config)#'},
- {'a': 'config term\n'
-       'Enter configuration commands, one per line.  End with CNTL/Z.\n'
-       'R1(config)#a\n'
-       '% Ambiguous command:  "a"\n'
+ {'a': 'config term
+'
+       'Enter configuration commands, one per line.  End with CNTL/Z.
+'
+       'R1(config)#a
+'
+       '% Ambiguous command:  "a"
+'
        'R1(config)#',
-  'logging': 'config term\n'
-             'Enter configuration commands, one per line.  End with CNTL/Z.\n'
-             'R1(config)#logging\n'
-             '% Incomplete command.\n'
-             '\n'
+  'logging': 'config term
+'
+             'Enter configuration commands, one per line.  End with CNTL/Z.
+'
+             'R1(config)#logging
+'
+             '% Incomplete command.
+'
+             '
+'
              'R1(config)#',
-  'logging 0255.255.1': 'config term\n'
-                        'Enter configuration commands, one per line.  End with CNTL/Z.\n'
-                        'R1(config)#logging 0255.255.1\n'
-                        '                   ^\n'
-                        "% Invalid input detected at '^' marker.\n"
-                        '\n'
+  'logging 0255.255.1': 'config term
+'
+                        'Enter configuration commands, one per line.  End with CNTL/Z.
+'
+                        'R1(config)#logging 0255.255.1
+'
+                        '                   ^
+'
+                        "% Invalid input detected at '^' marker.
+"
+                        '
+'
                         'R1(config)#'})
 
 In [19]: good, bad = result
@@ -92,38 +113,44 @@ R1(config)#logging
 R1(config)#a
 % Ambiguous command:  "a"
 """
-
-# списки команд с ошибками и без
 import re
-import yaml
 from netmiko import ConnectHandler
+import yaml
 
-commands_with_errors = ["logging 0255.255.1", "logging", "a"]
+# списки команд с ошибками и без:
+commands_with_errors = ["logging 0255.255.1", "logging", "i"]
 correct_commands = ["logging buffered 20010", "ip http server"]
 commands = commands_with_errors + correct_commands
 
+
 def send_config_commands(device, config_commands, log=True):
-    output_good = {}
-    output_bad = {}
-    regex = re.compile(r"% (.+)")
-    error_msg = "Команда '{}' выполнилась с ошибкой '{}' на устройстве {}"
+    good_commands = {}
+    bad_commands = {}
+    error_message = 'Команда "{}" выполнилась с ошибкой "{}" на устройстве {}'
+    regex = "% (?P<errmsg>.+)"
+
     if log:
-        print(f"Подключаюсь к {device['host']}...")
+        print("Подключаюсь к {}...".format(device["host"]))
     with ConnectHandler(**device) as ssh:
         ssh.enable()
         for command in config_commands:
             result = ssh.send_config_set(command, exit_config_mode=False)
-            match = regex.search(result)
-            if match:
-                output_bad[command] = result
-                print(error_msg.format(command, match.group(1), ssh.host))
+            error_in_result = re.search(regex, result)
+            if error_in_result:
+                print(
+                    error_message.format(
+                        command, error_in_result.group("errmsg"), ssh.host
+                    )
+                )
+                bad_commands[command] = result
             else:
-                output_good[command] = result
+                good_commands[command] = result
         ssh.exit_config_mode()
-    
-    return output_good, output_bad
+    return good_commands, bad_commands
 
-if __name__ == '__main__':
-    with open('devices.yaml') as f:
+
+if __name__ == "__main__":
+    with open("devices.yaml") as f:
         devices = yaml.safe_load(f)
-        print(send_config_commands(devices[0], commands))
+    for dev in devices:
+        print(send_config_commands(dev, commands))
