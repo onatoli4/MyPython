@@ -26,22 +26,25 @@ IP-адресов с помощью concurrent.futures (это надо сдел
 import subprocess
 from concurrent.futures import ThreadPoolExecutor
 
-def ping_ip_address(ip):
-    reply = subprocess.run(['ping', '-c', '1', '-W', '1', ip], stdout=subprocess.DEVNULL)
-    result = reply.returncode == 0
-    return result
+
+def ping_ip(ip):
+    result = subprocess.run(["ping", "-c", "3", "-n", ip], stdout=subprocess.DEVNULL)
+    ip_is_reachable = result.returncode == 0
+    return ip_is_reachable
+
 
 def ping_ip_addresses(ip_list, limit=3):
-    good_ip = []
-    bad_ip = []
+    reachable = []
+    unreachable = []
     with ThreadPoolExecutor(max_workers=limit) as executor:
-        result = executor.map(ping_ip_address, ip_list)
-        for ip, reply in zip(ip_list, result):
-            if reply:
-                good_ip.append(ip)
-            else:
-                bad_ip.append(ip)    
-    return good_ip, bad_ip
+        results = executor.map(ping_ip, ip_list)
+    for ip, status in zip(ip_list, results):
+        if status:
+            reachable.append(ip)
+        else:
+            unreachable.append(ip)
+    return reachable, unreachable
 
-if __name__ == '__main__':
-    print(ping_ip_addresses(["1.1.1.1", "8.8.8.8", "8.8.4.4", "2.2.2.2"], 4))
+
+if __name__ == "__main__":
+    print(ping_ip_addresses(["8.8.8.8", "192.168.100.22", "192.168.100.1"]))
