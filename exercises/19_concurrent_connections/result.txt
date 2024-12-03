@@ -1,13 +1,18 @@
-R1#sh ip int br
-Interface                  IP-Address      OK? Method Status                Protocol
-FastEthernet0/0            192.168.100.1   YES NVRAM  up                    up      
-FastEthernet0/1            unassigned      YES NVRAM  administratively down down    
-Loopback100                10.1.1.100      YES manual up                    up      
-R2#sh ip int br
-Interface                  IP-Address      OK? Method Status                Protocol
-FastEthernet0/0            192.168.100.2   YES NVRAM  up                    up      
-FastEthernet0/1            unassigned      YES NVRAM  administratively down down    
-R3#sh ip int br
-Interface                  IP-Address      OK? Method Status                Protocol
-FastEthernet0/0            192.168.100.3   YES NVRAM  up                    up      
-FastEthernet0/1            unassigned      YES NVRAM  administratively down down    
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#logging 10.1.1.1
+R1(config)#logging 10.2.2.2
+R1(config)#end
+R1#
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+R2(config)#logging 10.1.1.1
+R2(config)#logging 10.2.2.2
+R2(config)#end
+R2#
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#logging 10.1.1.1
+R3(config)#logging 10.2.2.2
+R3(config)#end
+R3#

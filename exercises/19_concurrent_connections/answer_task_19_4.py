@@ -105,42 +105,44 @@ R3#
 
 Для выполнения задания можно создавать любые дополнительные функции.
 """
-import yaml
-from netmiko import ConnectHandler
-from concurrent.futures import ThreadPoolExecutor
 from itertools import repeat
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-def send_show_to_device(device, command):
+from netmiko import ConnectHandler, NetMikoTimeoutException
+import yaml
+
+
+def send_show_command(device, command):
     with ConnectHandler(**device) as ssh:
         ssh.enable()
+        result = ssh.send_command(command)
         prompt = ssh.find_prompt()
-        reply = ssh.send_command(command, strip_command=False)
-        output = prompt + reply + '\n'
-    return output
+    return f"{prompt}{command}\n{result}\n"
 
-def send_conf_to_device(device, command):
+
+def send_cfg_commands(device, commands):
     with ConnectHandler(**device) as ssh:
         ssh.enable()
-        reply = ssh.send_config_set(command)
-        output = reply + '\n'
-    return output
+        result = ssh.send_config_set(commands)
+    return f"{result}\n"
+
 
 def send_commands_to_devices(devices, filename, *, show=None, config=None, limit=3):
     if show and config:
-        raise ValueError('Нужно указать что-то одно: show или config')
+        raise ValueError("Можно передавать только один из аргументов show/config")
+    command = show if show else config
+    function = send_show_command if show else send_cfg_commands
+
     with ThreadPoolExecutor(max_workers=limit) as executor:
-        if show:
-            result = executor.map(send_show_to_device, devices, repeat(show))
-        elif config:
-            result = executor.map(send_conf_to_device, devices, repeat(config))
-        with open(filename, 'w') as dst:
-            for r in result:
-                dst.write(r)
+        futures = [executor.submit(function, device, command) for device in devices]
+        with open(filename, "w") as f:
+            for future in as_completed(futures):
+                f.write(future.result())
 
 
-if __name__ == '__main__':
-    with open('devices.yaml') as f:
-        devices = yaml.safe_load(f)
-    commands = ['logging 10.1.1.1', 'logging 10.2.2.2']
-    send_commands_to_devices(devices, 'result.txt', config=commands)
-    
+if __name__ == "__main__":
+    command = "sh ip int br"
+    with open("devices.yaml") as f:
+        devices = yaml.load(f)
+    send_commands_to_devices(devices, show=command, filename="result.txt")
+    send_commands_to_devices(devices, config="logging 10.5.5.5", filename="result.txt")
