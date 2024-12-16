@@ -16,27 +16,18 @@
 
 """
 import textfsm
-from netmiko import ConnectHandler
+
 
 def parse_command_output(template, command_output):
-    with open(template) as f:
-        re_table = textfsm.TextFSM(f)
-        headers = re_table.header
-        result = re_table.ParseText(command_output)
-    return [headers] + result
-    
+    with open(template) as tmpl:
+        parser = textfsm.TextFSM(tmpl)
+        header = parser.header
+        result = parser.ParseText(command_output)
+    return [header] + result
 
-# вызов функции должен выглядеть так
+
 if __name__ == "__main__":
-    r1_params = {
-        "device_type": "cisco_ios",
-        "host": "192.168.100.1",
-        "username": "cisco",
-        "password": "cisco",
-        "secret": "cisco",
-    }
-    with ConnectHandler(**r1_params) as r1:
-        r1.enable()
-        output = r1.send_command("sh ip int br")
+    with open("output/sh_ip_int_br.txt") as show:
+        output = show.read()
     result = parse_command_output("templates/sh_ip_int_br.template", output)
     print(result)
