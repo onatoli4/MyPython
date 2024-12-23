@@ -36,45 +36,30 @@ In [5]: t.delete_node('SW1')
 
 """
 
-topology_example = {
-    ("R1", "Eth0/0"): ("SW1", "Eth0/1"),
-    ("R2", "Eth0/0"): ("SW1", "Eth0/2"),
-    ("R2", "Eth0/1"): ("SW2", "Eth0/11"),
-    ("R3", "Eth0/0"): ("SW1", "Eth0/3"),
-    ("R3", "Eth0/1"): ("R4", "Eth0/0"),
-    ("R3", "Eth0/2"): ("R5", "Eth0/0"),
-    ("SW1", "Eth0/1"): ("R1", "Eth0/0"),
-    ("SW1", "Eth0/2"): ("R2", "Eth0/0"),
-    ("SW1", "Eth0/3"): ("R3", "Eth0/0"),
-}
-
 class Topology:
     def __init__(self, topology_dict):
         self.topology = self._normalize(topology_dict)
-        
+
     def _normalize(self, topology_dict):
-        return {min(local,remote): max(local,remote)
-                for local,remote in topology_dict.items()}
-    
-    def delete_link(self, local, remote):
-        if self.topology.get(local) == remote:
-            del self.topology[local]
-        elif self.topology.get(remote) == local:
-            del self.topology[remote]
+        normalized_topology = {}
+        for box, neighbor in topology_dict.items():
+            if not neighbor in normalized_topology:
+                normalized_topology[box] = neighbor
+        return normalized_topology
+
+    def delete_link(self, from_port, to_port):
+        if self.topology.get(from_port) == to_port:
+            del self.topology[from_port]
+        elif self.topology.get(to_port) == from_port:
+            del self.topology[to_port]
         else:
             print("Такого соединения нет")
-    
-    def delete_node(self, device):
-        orig_size = len(self.topology)
-        for src,dst in list(self.topology.items()):
-            if device in src or device in dst:
+
+    def delete_node(self, node):
+        original_size = len(self.topology)
+        for src, dest in list(self.topology.items()):
+            if node in src or node in dest:
                 del self.topology[src]
-        if orig_size == len(self.topology):
+        if original_size == len(self.topology):
             print("Такого устройства нет")
 
-if __name__ == "__main__":
-    top = Topology(topology_example)
-    print(top.topology)
-    top.delete_node('SW1')
-    print(top.topology)
-    top.delete_node('SW1')
