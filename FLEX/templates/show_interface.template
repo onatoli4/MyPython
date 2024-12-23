@@ -1,0 +1,16 @@
+Value name (\S+)
+Value type (\S+)
+Value ip ((\d+\.){3}\d+(/\d+)?)
+Value assignment (Dynamic|Static)
+Value status (UP|DOWN)
+
+Start
+  ^No\.Name\s+Status\s+Ip Address\s+IP Assignment\s+Interface Type\s*$$ -> Interfaces
+  ^\s*$$
+  ^. -> Error
+
+Interfaces
+  ^\d+\s+${name}\s+${status}\s+${ip}\s+${assignment}\s+${type}\s*$$ -> Record
+  ^\s*$$
+  ^=*$$
+  ^. -> Error

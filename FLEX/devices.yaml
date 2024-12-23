@@ -1,0 +1,6 @@
+- device_type: zyxel_os
+  host: 192.168.168.1
+  username: admin
+  password: "89202676703"
+  secret: "89202676703"
+  port: 22

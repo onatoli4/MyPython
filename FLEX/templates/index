@@ -1,0 +1,4 @@
+Template, Hostname, Vendor, Command
+show_arp_table.template, .*, cisco_ios, show arp-table
+show_interface.template, .*, cisco_ios, show interface
+

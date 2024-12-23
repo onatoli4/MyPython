@@ -1,0 +1,13 @@
+Value ip ((\d+\.){3}\d+)
+Value mac (([0-9a-f]{2}:){5}[0-9a-f]{2}|incomplete)
+Value intf (\S+)
+
+Start
+  ^Address\s+HWtype\s+HWaddress\s+Flags\s+Mask\s+Iface\s*$$ -> ARPTable
+  ^\s*$$
+  ^. -> Error
+
+ARPTable
+  ^${ip}\s+(ether)?\s+(\()?${mac}(\))?\s+(\w)?\s+${intf}\s*$$ -> Record
+  ^\s*$$
+  ^. -> Error

@@ -1,0 +1,831 @@
+DEBUG:paramiko.transport:starting thread (client mode): 0xcf01b70
+DEBUG:paramiko.transport:Local version/idstring: SSH-2.0-paramiko_3.5.0
+DEBUG:paramiko.transport:Remote version/idstring: SSH-2.0-sshd
+INFO:paramiko.transport:Connected (version 2.0, client sshd)
+DEBUG:paramiko.transport:=== Key exchange possibilities ===
+DEBUG:paramiko.transport:kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+DEBUG:paramiko.transport:server key: rsa-sha2-512, rsa-sha2-256
+DEBUG:paramiko.transport:client encrypt: aes128-gcm@openssh.com, aes256-gcm@openssh.com, aes256-ctr, aes192-ctr, aes128-ctr
+DEBUG:paramiko.transport:server encrypt: aes128-gcm@openssh.com, aes256-gcm@openssh.com, aes256-ctr, aes192-ctr, aes128-ctr
+DEBUG:paramiko.transport:client mac: hmac-sha1, hmac-sha2-256, hmac-sha2-512, umac-128@openssh.com, hmac-sha1-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-128-etm@openssh.com
+DEBUG:paramiko.transport:server mac: hmac-sha1, hmac-sha2-256, hmac-sha2-512, umac-128@openssh.com, hmac-sha1-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-128-etm@openssh.com
+DEBUG:paramiko.transport:client compress: none, zlib@openssh.com
+DEBUG:paramiko.transport:server compress: none, zlib@openssh.com
+DEBUG:paramiko.transport:client lang: <none>
+DEBUG:paramiko.transport:server lang: <none>
+DEBUG:paramiko.transport:kex follows: False
+DEBUG:paramiko.transport:=== Key exchange agreements ===
+DEBUG:paramiko.transport:Strict kex mode: True
+DEBUG:paramiko.transport:Kex: curve25519-sha256@libssh.org
+DEBUG:paramiko.transport:HostKey: rsa-sha2-512
+DEBUG:paramiko.transport:Cipher: aes128-ctr
+DEBUG:paramiko.transport:MAC: hmac-sha2-256
+DEBUG:paramiko.transport:Compression: none
+DEBUG:paramiko.transport:=== End of kex handshake ===
+DEBUG:paramiko.transport:Resetting outbound seqno after NEWKEYS due to strict mode
+DEBUG:paramiko.transport:kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+DEBUG:paramiko.transport:Switch to new keys ...
+DEBUG:paramiko.transport:Resetting inbound seqno after NEWKEYS due to strict mode
+DEBUG:paramiko.transport:Adding ssh-rsa host key for 192.168.168.1: b'ad68a2648ce52633294a73fc3c46920f'
+DEBUG:paramiko.transport:Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+DEBUG:paramiko.transport:userauth is OK
+INFO:paramiko.transport:Authentication (password) successful!
+DEBUG:paramiko.transport:[chan 0] Max packet in: 32768 bytes
+DEBUG:paramiko.transport:Received global request "hostkeys-00@openssh.com"
+DEBUG:paramiko.transport:Rejecting "hostkeys-00@openssh.com" global request from server.
+DEBUG:paramiko.transport:[chan 0] Max packet out: 32768 bytes
+DEBUG:paramiko.transport:Secsh channel 0 opened.
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: usgflex500h> 
+usgflex500h> 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+usgflex500h> 
+DEBUG:netmiko:
+Parenthesis found in pattern.
+
+pattern: (\#|>)
+
+
+This can be problemtic when used in read_until_pattern().
+
+You should ensure that you use either non-capture groups i.e. '(?:' or that the
+parenthesis completely wrap the pattern '(pattern)'
+DEBUG:netmiko:Pattern found: (\#|>) 
+usgflex500h>
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:Clear buffer detects data in the channel
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is usgflex500h>
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+usgflex500h> 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is usgflex500h>
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+usgflex500h> 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is usgflex500h>
+DEBUG:netmiko:write_channel: b'exit\n'
+DEBUG:paramiko.transport:EOF in transport thread
+DEBUG:paramiko.transport:starting thread (client mode): 0x74365b00
+DEBUG:paramiko.transport:Local version/idstring: SSH-2.0-paramiko_3.5.0
+DEBUG:paramiko.transport:Remote version/idstring: SSH-2.0-sshd
+INFO:paramiko.transport:Connected (version 2.0, client sshd)
+DEBUG:paramiko.transport:=== Key exchange possibilities ===
+DEBUG:paramiko.transport:kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+DEBUG:paramiko.transport:server key: rsa-sha2-512, rsa-sha2-256
+DEBUG:paramiko.transport:client encrypt: aes128-gcm@openssh.com, aes256-gcm@openssh.com, aes256-ctr, aes192-ctr, aes128-ctr
+DEBUG:paramiko.transport:server encrypt: aes128-gcm@openssh.com, aes256-gcm@openssh.com, aes256-ctr, aes192-ctr, aes128-ctr
+DEBUG:paramiko.transport:client mac: hmac-sha1, hmac-sha2-256, hmac-sha2-512, umac-128@openssh.com, hmac-sha1-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-128-etm@openssh.com
+DEBUG:paramiko.transport:server mac: hmac-sha1, hmac-sha2-256, hmac-sha2-512, umac-128@openssh.com, hmac-sha1-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-128-etm@openssh.com
+DEBUG:paramiko.transport:client compress: none, zlib@openssh.com
+DEBUG:paramiko.transport:server compress: none, zlib@openssh.com
+DEBUG:paramiko.transport:client lang: <none>
+DEBUG:paramiko.transport:server lang: <none>
+DEBUG:paramiko.transport:kex follows: False
+DEBUG:paramiko.transport:=== Key exchange agreements ===
+DEBUG:paramiko.transport:Strict kex mode: True
+DEBUG:paramiko.transport:Kex: curve25519-sha256@libssh.org
+DEBUG:paramiko.transport:HostKey: rsa-sha2-512
+DEBUG:paramiko.transport:Cipher: aes128-ctr
+DEBUG:paramiko.transport:MAC: hmac-sha2-256
+DEBUG:paramiko.transport:Compression: none
+DEBUG:paramiko.transport:=== End of kex handshake ===
+DEBUG:paramiko.transport:Resetting outbound seqno after NEWKEYS due to strict mode
+DEBUG:paramiko.transport:kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+DEBUG:paramiko.transport:Switch to new keys ...
+DEBUG:paramiko.transport:Resetting inbound seqno after NEWKEYS due to strict mode
+DEBUG:paramiko.transport:Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+DEBUG:paramiko.transport:Adding ssh-rsa host key for 192.168.168.1: b'ad68a2648ce52633294a73fc3c46920f'
+DEBUG:paramiko.transport:userauth is OK
+INFO:paramiko.transport:Authentication (password) successful!
+DEBUG:paramiko.transport:[chan 0] Max packet in: 32768 bytes
+DEBUG:paramiko.transport:Received global request "hostkeys-00@openssh.com"
+DEBUG:paramiko.transport:Rejecting "hostkeys-00@openssh.com" global request from server.
+DEBUG:paramiko.transport:[chan 0] Max packet out: 32768 bytes
+DEBUG:paramiko.transport:Secsh channel 0 opened.
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: usgflex500h> 
+usgflex500h> 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+usgflex500h> 
+DEBUG:netmiko:
+Parenthesis found in pattern.
+
+pattern: (\#|>)
+
+
+This can be problemtic when used in read_until_pattern().
+
+You should ensure that you use either non-capture groups i.e. '(?:' or that the
+parenthesis completely wrap the pattern '(pattern)'
+DEBUG:netmiko:Pattern found: (\#|>) 
+usgflex500h>
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:Clear buffer detects data in the channel
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is usgflex500h>
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+usgflex500h> 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is usgflex500h>
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+usgflex500h> 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is usgflex500h>
+DEBUG:netmiko:write_channel: b'edit running\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: edit running
+
+DEBUG:netmiko:Pattern found: (edit\ running) edit running
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: usgflex500h running config# 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'exit\n'
+DEBUG:paramiko.transport:EOF in transport thread
+DEBUG:paramiko.transport:starting thread (client mode): 0xb889be0
+DEBUG:paramiko.transport:Local version/idstring: SSH-2.0-paramiko_3.5.0
+DEBUG:paramiko.transport:Remote version/idstring: SSH-2.0-sshd
+INFO:paramiko.transport:Connected (version 2.0, client sshd)
+DEBUG:paramiko.transport:=== Key exchange possibilities ===
+DEBUG:paramiko.transport:kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+DEBUG:paramiko.transport:server key: rsa-sha2-512, rsa-sha2-256
+DEBUG:paramiko.transport:client encrypt: aes128-gcm@openssh.com, aes256-gcm@openssh.com, aes256-ctr, aes192-ctr, aes128-ctr
+DEBUG:paramiko.transport:server encrypt: aes128-gcm@openssh.com, aes256-gcm@openssh.com, aes256-ctr, aes192-ctr, aes128-ctr
+DEBUG:paramiko.transport:client mac: hmac-sha1, hmac-sha2-256, hmac-sha2-512, umac-128@openssh.com, hmac-sha1-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-128-etm@openssh.com
+DEBUG:paramiko.transport:server mac: hmac-sha1, hmac-sha2-256, hmac-sha2-512, umac-128@openssh.com, hmac-sha1-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-128-etm@openssh.com
+DEBUG:paramiko.transport:client compress: none, zlib@openssh.com
+DEBUG:paramiko.transport:server compress: none, zlib@openssh.com
+DEBUG:paramiko.transport:client lang: <none>
+DEBUG:paramiko.transport:server lang: <none>
+DEBUG:paramiko.transport:kex follows: False
+DEBUG:paramiko.transport:=== Key exchange agreements ===
+DEBUG:paramiko.transport:Strict kex mode: True
+DEBUG:paramiko.transport:Kex: curve25519-sha256@libssh.org
+DEBUG:paramiko.transport:HostKey: rsa-sha2-512
+DEBUG:paramiko.transport:Cipher: aes128-ctr
+DEBUG:paramiko.transport:MAC: hmac-sha2-256
+DEBUG:paramiko.transport:Compression: none
+DEBUG:paramiko.transport:=== End of kex handshake ===
+DEBUG:paramiko.transport:Resetting outbound seqno after NEWKEYS due to strict mode
+DEBUG:paramiko.transport:kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+DEBUG:paramiko.transport:Switch to new keys ...
+DEBUG:paramiko.transport:Resetting inbound seqno after NEWKEYS due to strict mode
+DEBUG:paramiko.transport:Adding ssh-rsa host key for 192.168.168.1: b'ad68a2648ce52633294a73fc3c46920f'
+DEBUG:paramiko.transport:Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+DEBUG:paramiko.transport:userauth is OK
+INFO:paramiko.transport:Authentication (password) successful!
+DEBUG:paramiko.transport:[chan 0] Max packet in: 32768 bytes
+DEBUG:paramiko.transport:Received global request "hostkeys-00@openssh.com"
+DEBUG:paramiko.transport:Rejecting "hostkeys-00@openssh.com" global request from server.
+DEBUG:paramiko.transport:[chan 0] Max packet out: 32768 bytes
+DEBUG:paramiko.transport:Secsh channel 0 opened.
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: usgflex500h> 
+usgflex500h> 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+usgflex500h> 
+DEBUG:netmiko:
+Parenthesis found in pattern.
+
+pattern: (\#|>)
+
+
+This can be problemtic when used in read_until_pattern().
+
+You should ensure that you use either non-capture groups i.e. '(?:' or that the
+parenthesis completely wrap the pattern '(pattern)'
+DEBUG:netmiko:Pattern found: (\#|>) 
+usgflex500h>
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:Clear buffer detects data in the channel
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is usgflex500h>
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+usgflex500h> 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is usgflex500h>
+DEBUG:netmiko:write_channel: b'edit running\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: edit running
+
+DEBUG:netmiko:Pattern found: (edit\ running) edit running
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: usgflex500h running config# 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+usgflex500h running config# 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is usgflex500h running config#
+DEBUG:netmiko:write_channel: b'exit\n'
+DEBUG:paramiko.transport:EOF in transport thread
+DEBUG:paramiko.transport:starting thread (client mode): 0xe5d85940
+DEBUG:paramiko.transport:Local version/idstring: SSH-2.0-paramiko_3.5.0
+DEBUG:paramiko.transport:Remote version/idstring: SSH-2.0-sshd
+INFO:paramiko.transport:Connected (version 2.0, client sshd)
+DEBUG:paramiko.transport:=== Key exchange possibilities ===
+DEBUG:paramiko.transport:kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+DEBUG:paramiko.transport:server key: rsa-sha2-512, rsa-sha2-256
+DEBUG:paramiko.transport:client encrypt: aes128-gcm@openssh.com, aes256-gcm@openssh.com, aes256-ctr, aes192-ctr, aes128-ctr
+DEBUG:paramiko.transport:server encrypt: aes128-gcm@openssh.com, aes256-gcm@openssh.com, aes256-ctr, aes192-ctr, aes128-ctr
+DEBUG:paramiko.transport:client mac: hmac-sha1, hmac-sha2-256, hmac-sha2-512, umac-128@openssh.com, hmac-sha1-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-128-etm@openssh.com
+DEBUG:paramiko.transport:server mac: hmac-sha1, hmac-sha2-256, hmac-sha2-512, umac-128@openssh.com, hmac-sha1-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-128-etm@openssh.com
+DEBUG:paramiko.transport:client compress: none, zlib@openssh.com
+DEBUG:paramiko.transport:server compress: none, zlib@openssh.com
+DEBUG:paramiko.transport:client lang: <none>
+DEBUG:paramiko.transport:server lang: <none>
+DEBUG:paramiko.transport:kex follows: False
+DEBUG:paramiko.transport:=== Key exchange agreements ===
+DEBUG:paramiko.transport:Strict kex mode: True
+DEBUG:paramiko.transport:Kex: curve25519-sha256@libssh.org
+DEBUG:paramiko.transport:HostKey: rsa-sha2-512
+DEBUG:paramiko.transport:Cipher: aes128-ctr
+DEBUG:paramiko.transport:MAC: hmac-sha2-256
+DEBUG:paramiko.transport:Compression: none
+DEBUG:paramiko.transport:=== End of kex handshake ===
+DEBUG:paramiko.transport:Resetting outbound seqno after NEWKEYS due to strict mode
+DEBUG:paramiko.transport:kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+DEBUG:paramiko.transport:Switch to new keys ...
+DEBUG:paramiko.transport:Resetting inbound seqno after NEWKEYS due to strict mode
+DEBUG:paramiko.transport:Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+DEBUG:paramiko.transport:Adding ssh-rsa host key for 192.168.168.1: b'ad68a2648ce52633294a73fc3c46920f'
+DEBUG:paramiko.transport:userauth is OK
+INFO:paramiko.transport:Authentication (password) successful!
+DEBUG:paramiko.transport:[chan 0] Max packet in: 32768 bytes
+DEBUG:paramiko.transport:Received global request "hostkeys-00@openssh.com"
+DEBUG:paramiko.transport:Rejecting "hostkeys-00@openssh.com" global request from server.
+DEBUG:paramiko.transport:[chan 0] Max packet out: 32768 bytes
+DEBUG:paramiko.transport:Secsh channel 0 opened.
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: usgflex500h> 
+usgflex500h> 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+usgflex500h> 
+DEBUG:netmiko:
+Parenthesis found in pattern.
+
+pattern: (\#|>)
+
+
+This can be problemtic when used in read_until_pattern().
+
+You should ensure that you use either non-capture groups i.e. '(?:' or that the
+parenthesis completely wrap the pattern '(pattern)'
+DEBUG:netmiko:Pattern found: (\#|>) 
+usgflex500h>
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:Clear buffer detects data in the channel
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is usgflex500h>
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+usgflex500h> 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is usgflex500h>
+DEBUG:netmiko:write_channel: b'show arp-table\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: show arp-table
+
+DEBUG:netmiko:Pattern found: (show\ arp\-table) show arp-table
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: Address                  HWtype  HWaddress           Flags Mask            Iface
+169.254.128.35           ether   60:f6:77:bf:48:75   C                     ge3
+192.168.168.40           ether   50:5a:65:5f:fb:fb   C                     ge3
+192.168.168.41           ether   4c:77:cb:0e:5c:31   C                     ge3
+192.168.168.39           ether   60:f6:77:bf:48:75   C                     ge3
+192.168.168.38           ether   14:99:3e:e1:82:1a   C                     ge3
+192.168.168.37           ether   92:27:17:78:3c:80   C                     ge3
+192.168.168.36           ether   5c:92:5e:3c:8e:58   C                     ge3
+192.168.168.34           ether   70:3e:97:24:69:3a   C                     ge3
+192.168.168.33           ether   6c:f7:84:61:ff:df   C                     ge3
+usgflex500h> 
+DEBUG:netmiko:write_channel: b'exit\n'
+DEBUG:paramiko.transport:EOF in transport thread
+DEBUG:paramiko.transport:starting thread (client mode): 0xbc37bac8
+DEBUG:paramiko.transport:Local version/idstring: SSH-2.0-paramiko_3.5.0
+DEBUG:paramiko.transport:Remote version/idstring: SSH-2.0-sshd
+INFO:paramiko.transport:Connected (version 2.0, client sshd)
+DEBUG:paramiko.transport:=== Key exchange possibilities ===
+DEBUG:paramiko.transport:kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+DEBUG:paramiko.transport:server key: rsa-sha2-512, rsa-sha2-256
+DEBUG:paramiko.transport:client encrypt: aes128-gcm@openssh.com, aes256-gcm@openssh.com, aes256-ctr, aes192-ctr, aes128-ctr
+DEBUG:paramiko.transport:server encrypt: aes128-gcm@openssh.com, aes256-gcm@openssh.com, aes256-ctr, aes192-ctr, aes128-ctr
+DEBUG:paramiko.transport:client mac: hmac-sha1, hmac-sha2-256, hmac-sha2-512, umac-128@openssh.com, hmac-sha1-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-128-etm@openssh.com
+DEBUG:paramiko.transport:server mac: hmac-sha1, hmac-sha2-256, hmac-sha2-512, umac-128@openssh.com, hmac-sha1-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-128-etm@openssh.com
+DEBUG:paramiko.transport:client compress: none, zlib@openssh.com
+DEBUG:paramiko.transport:server compress: none, zlib@openssh.com
+DEBUG:paramiko.transport:client lang: <none>
+DEBUG:paramiko.transport:server lang: <none>
+DEBUG:paramiko.transport:kex follows: False
+DEBUG:paramiko.transport:=== Key exchange agreements ===
+DEBUG:paramiko.transport:Strict kex mode: True
+DEBUG:paramiko.transport:Kex: curve25519-sha256@libssh.org
+DEBUG:paramiko.transport:HostKey: rsa-sha2-512
+DEBUG:paramiko.transport:Cipher: aes128-ctr
+DEBUG:paramiko.transport:MAC: hmac-sha2-256
+DEBUG:paramiko.transport:Compression: none
+DEBUG:paramiko.transport:=== End of kex handshake ===
+DEBUG:paramiko.transport:Resetting outbound seqno after NEWKEYS due to strict mode
+DEBUG:paramiko.transport:kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+DEBUG:paramiko.transport:Switch to new keys ...
+DEBUG:paramiko.transport:Resetting inbound seqno after NEWKEYS due to strict mode
+DEBUG:paramiko.transport:Adding ssh-rsa host key for 192.168.168.1: b'ad68a2648ce52633294a73fc3c46920f'
+DEBUG:paramiko.transport:Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+DEBUG:paramiko.transport:userauth is OK
+INFO:paramiko.transport:Authentication (password) successful!
+DEBUG:paramiko.transport:[chan 0] Max packet in: 32768 bytes
+DEBUG:paramiko.transport:Received global request "hostkeys-00@openssh.com"
+DEBUG:paramiko.transport:Rejecting "hostkeys-00@openssh.com" global request from server.
+DEBUG:paramiko.transport:[chan 0] Max packet out: 32768 bytes
+DEBUG:paramiko.transport:Secsh channel 0 opened.
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: usgflex500h> 
+usgflex500h> 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+usgflex500h> 
+DEBUG:netmiko:
+Parenthesis found in pattern.
+
+pattern: (\#|>)
+
+
+This can be problemtic when used in read_until_pattern().
+
+You should ensure that you use either non-capture groups i.e. '(?:' or that the
+parenthesis completely wrap the pattern '(pattern)'
+DEBUG:netmiko:Pattern found: (\#|>) 
+usgflex500h>
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:Clear buffer detects data in the channel
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is usgflex500h>
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+usgflex500h> 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is usgflex500h>
+DEBUG:netmiko:write_channel: b'show arp-table\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: show arp-table
+
+DEBUG:netmiko:Pattern found: (show\ arp\-table) show arp-table
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: Address                  HWtype  HWaddress           Flags Mask            Iface
+169.254.128.35           ether   60:f6:77:bf:48:75   C                     ge3
+192.168.168.40           ether   50:5a:65:5f:fb:fb   C                     ge3
+192.168.168.41           ether   4c:77:cb:0e:5c:31   C                     ge3
+192.168.168.39           ether   60:f6:77:bf:48:75   C                     ge3
+192.168.168.38           ether   14:99:3e:e1:82:1a   C                     ge3
+192.168.168.37           ether   92:27:17:78:3c:80   C                     ge3
+192.168.168.36           ether   5c:92:5e:3c:8e:58   C                     ge3
+192.168.168.34           ether   70:3e:97:24:69:3a   C                     ge3
+192.168.168.33           ether   6c:f7:84:61:ff:df   C                     ge3
+usgflex500h> 
+DEBUG:netmiko:write_channel: b'exit\n'
+DEBUG:paramiko.transport:EOF in transport thread
