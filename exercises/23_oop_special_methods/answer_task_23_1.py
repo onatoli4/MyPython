@@ -43,24 +43,28 @@ In [6]: ip1 = IPAddress('10.1.1.1/240')
 ValueError: Incorrect mask
 
 """
+import ipaddress
+
 
 class IPAddress:
-    def __init__(self, ip_mask):
-        self.ip, self.mask = self._checking(ip_mask)
-    
-    def _checking(self, ip_mask):
-        ip, mask = ip_mask.split('/')
-        if not 8 <= int(mask) <= 32:
-            raise ValueError ("Incorrect mask")
-        ip_list = ip.split('.')
-        if len(ip_list) != 4:
-            raise ValueError ("Incorrect IPv4 address")
-        for i in ip_list:
-            if not i or not 0 <= int(i) <= 255:
-                raise ValueError ("Incorrect IPv4 address")
-        return ip, int(mask)
-    
-if __name__ == "__main__":
-    ip1 = IPAddress('10.1.1.1/24')
-    print(ip1.ip)
-    print(ip1.mask)
+    def __init__(self, ipaddress):
+        ip, mask = ipaddress.split("/")
+        self._check_ip(ip)
+        self._check_mask(mask)
+        self.ip, self.mask = ip, int(mask)
+
+    def _check_ip(self, ip):
+        octets = ip.split(".")
+        correct_octets = [
+            octet for octet in octets if octet.isdigit() and 0 <= int(octet) <= 255
+        ]
+        if len(octets) == 4 and len(correct_octets) == 4:
+            return True
+        else:
+            raise ValueError("Incorrect IPv4 address")
+
+    def _check_mask(self, mask):
+        if mask.isdigit() and 8 <= int(mask) <= 32:
+            return True
+        else:
+            raise ValueError("Incorrect mask")
